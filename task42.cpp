@@ -3,9 +3,9 @@
 using namespace std;
 
 int** createMatrix(int rows, int cols) {
-    int** matrix = new int*[rows];
+    int** matrix = (int**)malloc(rows * sizeof(int*));
     for (int i = 0; i < rows; i++)
-        matrix[i] = new int[cols];
+        matrix[i] = (int*)malloc(cols * sizeof(int));
     return matrix;
 }
 
@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 
     int x = atoi(argv[1]);
     int y = atoi(argv[2]);
-
+    
     int** a = createMatrix(x, y);
 
     for (int i = 0; i < x; i++)
@@ -28,9 +28,8 @@ int main(int argc, char* argv[]) {
     }
 
     for (int i = 0; i < x; i++)
-        delete[] a[i];
-    delete[] a;
+        free(a[i]);
+    free(a);
 
     return 0;
 }
-
