@@ -15,7 +15,6 @@ Matrix::Matrix(const Matrix& other)
         for (int j = 0; j < m_cols; ++j)
             m_data[i][j] = other.m_data[i][j];
     }
-    std::cout << "Matrix copy constructor called\n";
 }
 
 Matrix& Matrix::operator=(const Matrix& other) {
@@ -33,8 +32,40 @@ Matrix& Matrix::operator=(const Matrix& other) {
                 m_data[i][j] = other.m_data[i][j];
         }
     }
-    std::cout << "Matrix assignment operator called\n";
     return *this;
+}
+
+Matrix& Matrix::operator++(){
+    for (int i = 0; i < m_rows; i++)
+        for (int j = 0; j < m_cols; j++)
+            ++m_data[i][j];
+    return *this;
+}
+
+Matrix Matrix::operator++(int){
+    Matrix temp = *this;
+    ++(*this);
+    return temp;
+}
+
+Matrix Matrix::operator*(const Matrix& other){
+    if(m_cols != other.m_rows) {
+        std::cout << "Cannot multiply: incompatible dimensions.\n";
+        return Matrix(0, 0);
+    }
+
+    Matrix res(m_rows, other.m_cols);
+
+    for(int i = 0; i < m_rows; i++){
+        for(int j = 0; j < other.m_cols; j++){
+            int sum = 0;
+            for(int k = 0; k < m_cols; k++){
+                sum += m_data[i][k] * other.m_data[k][j];
+            }
+            res.m_data[i][j] = sum;
+        }
+    }
+    return res;
 }
 
 Matrix::~Matrix() {

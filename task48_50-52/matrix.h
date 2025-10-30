@@ -12,6 +12,9 @@ public:
     Matrix(const Matrix& other);
 
     Matrix& operator=(const Matrix& other);
+    Matrix operator*(const Matrix& other);
+    Matrix& operator++();
+    Matrix operator++(int);
 
     ~Matrix();
 
