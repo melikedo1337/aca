@@ -12,33 +12,33 @@ int main() {
     m1.setValue(1, 2, 6);
 
     std::cout << "m1:\n";
-    m1.print();
+    std::cout << m1 << std::endl;
 
     // --- Test 2: copy constructor ---
     Matrix m2 = m1;
     std::cout << "\nm2 (copy of m1):\n";
-    m2.print();
+    std::cout << m2 << std::endl;
 
     // --- Test 3: assignment operator ---
     Matrix m3;
     m3 = m1;
     std::cout << "\nm3 (assigned from m1):\n";
-    m3.print();
+    std::cout << m3 << std::endl;
 
     // --- Test 4: prefix ++ ---
     ++m1;
     std::cout << "\nm1 after prefix ++:\n";
-    m1.print();
+    std::cout << m1 << std::endl;
 
     // --- Test 5: postfix ++ ---
     m2++;
     std::cout << "\nm2 after postfix ++:\n";
-    m2.print();
+    std::cout << m2 << std::endl;
 
     // --- Test 6: rotate90 ---
     Matrix m4 = m1.rotate90();
     std::cout << "\nm4 (m1 rotated 90 degrees):\n";
-    m4.print();
+    std::cout << m4 << std::endl;
 
     // --- Test 7: valid multiplication ---
     Matrix m5(3, 2);
@@ -50,17 +50,17 @@ int main() {
     m5.setValue(2, 1, 6);
 
     std::cout << "\nm5:\n";
-    m5.print();
+    std::cout << m5 << std::endl;
 
     Matrix m6 = m1 * m5;
     std::cout << "\nm6 (m1 * m5):\n";
-    m6.print();
+    std::cout << m6 << std::endl;
 
     // --- Test 8: invalid multiplication (bad dimensions) ---
     Matrix m7(2, 2);
     Matrix m8 = m1 * m7; // should print error
     std::cout << "\nm8 (attempted m1 * m7 with wrong dimensions):\n";
-    m8.print(); // will be empty 0x0 matrix
+    std::cout << m8 << std::endl; // will be empty 0x0 matrix
 
     return 0;
 }

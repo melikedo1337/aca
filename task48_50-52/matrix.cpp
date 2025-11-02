@@ -94,10 +94,12 @@ int Matrix::getValue(int row, int col) const {
     return 0;
 }
 
-void Matrix::print() const {
-    for (int i = 0; i < m_rows; ++i) {
-        for (int j = 0; j < m_cols; ++j)
-            std::cout << m_data[i][j] << " ";
-        std::cout << std::endl;
+std::ostream& operator<<(std::ostream& out, const Matrix& mat){
+    for (int i = 0; i < mat.m_rows; ++i) {
+        for (int j = 0; j < mat.m_cols; ++j)
+            out << mat.m_data[i][j] << " ";
+        out << std::endl;
     }
+
+    return out;
 }
