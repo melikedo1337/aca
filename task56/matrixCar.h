@@ -2,7 +2,6 @@
 
 #include "car.h"
 #include <iostream>
-#include <stdexcept>
 
 class MatrixCar {
 private:
@@ -22,4 +21,5 @@ public:
     int getRows() const;
     int getCols() const;
 };
+
 
