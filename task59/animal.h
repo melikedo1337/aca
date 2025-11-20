@@ -12,16 +12,17 @@ protected:
 public:
     Animal();
     Animal(const std::string& name, int age, double weight);
+    virtual ~Animal() = default;
 
-    void setName(const std::string& n);
-    void setAge(int a);
-    void setWeight(double w);
+    virtual void setName(const std::string& n);
+    virtual void setAge(int a);
+    virtual void setWeight(double w);
 
-    std::string getName() const;
-    int getAge() const;
-    double getWeight() const;
+    virtual std::string getName() const;
+    virtual int getAge() const;
+    virtual double getWeight() const;
 
-    void print() const;
+    virtual void print() const = 0;
 };
 
 
@@ -38,7 +39,7 @@ public:
     Dog(const std::string& name, int age, double weight);
 
     void bark() const;
-    void print() const;
+    void print() const override;
 };
 
 
@@ -55,7 +56,7 @@ public:
     Cat(const std::string& name, int age, double weight);
 
     void meow() const;
-    void print() const;
+    void print() const override;
 };
 
 
@@ -72,7 +73,7 @@ public:
     Bird(const std::string& name, int age, double weight);
 
     void fly() const;
-    void print() const;
+    void print() const override;
 };
 
 
@@ -89,7 +90,7 @@ public:
     Fish(const std::string& name, int age, double weight);
 
     void swim() const;
-    void print() const;
+    void print() const override;
 };
 
 
@@ -106,7 +107,7 @@ public:
     Lion(const std::string& name, int age, double weight);
 
     void roar() const;
-    void print() const;
+    void print() const override;
 };
 
 
@@ -123,5 +124,5 @@ public:
     Elephant(const std::string& name, int age, double weight);
 
     void sound() const;
-    void print() const;
+    void print() const override;
 };
