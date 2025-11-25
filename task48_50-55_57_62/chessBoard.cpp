@@ -7,6 +7,18 @@ ChessBoard::ChessBoard() {
             setValue(i, j, 0);
 }
 
+ChessBoard::ChessBoard(ChessBoard&& other) noexcept
+    : Matrix(std::move(other))
+{
+}
+
+ChessBoard& ChessBoard::operator=(ChessBoard&& other) noexcept {
+    if (this != &other) {
+        Matrix::operator=(std::move(other));
+    }
+    return *this;
+}
+
 void ChessBoard::setupDefault() {
     setValue(0, 0, -2); setValue(0, 1, -3); setValue(0, 2, -4);
     setValue(0, 3, -5); setValue(0, 4, -6); setValue(0, 5, -4);
