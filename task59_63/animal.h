@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 #include <iostream>
 
@@ -14,115 +13,71 @@ public:
     Animal(const std::string& name, int age, double weight);
     virtual ~Animal() = default;
 
-    virtual void setName(const std::string& n);
-    virtual void setAge(int a);
-    virtual void setWeight(double w);
+    void setName(const std::string& n);
+    void setAge(int a);
+    void setWeight(double w);
 
-    virtual std::string getName() const;
-    virtual int getAge() const;
-    virtual double getWeight() const;
+    std::string getName() const;
+    int getAge() const;
+    double getWeight() const;
+
+    bool operator==(const Animal& other) const;
+    bool operator<(const Animal& other) const;
+    bool operator>(const Animal& other) const;
 
     virtual void print() const = 0;
 };
 
-
 class Dog : public Animal {
     std::string m_breed;
-    bool m_trained;
-    std::string m_food;
-    int m_tricks;
-    double m_speed;
-    bool m_loyal;
-
 public:
     Dog();
-    Dog(const std::string& name, int age, double weight);
-
+    Dog(const std::string& name, int age, double weight, const std::string& breed = "Unknown");
     void bark() const;
     void print() const override;
 };
 
-
 class Cat : public Animal {
     std::string m_color;
-    bool m_indoor;
-    double m_jump;
-    int m_sleep;
-    std::string m_toy;
-    bool m_lovesMilk;
-
 public:
     Cat();
-    Cat(const std::string& name, int age, double weight);
-
+    Cat(const std::string& name, int age, double weight, const std::string& color = "Unknown");
     void meow() const;
     void print() const override;
 };
 
-
 class Bird : public Animal {
-    double m_wings;
-    bool m_canFly;
-    std::string m_kind;
-    double m_speed;
-    int m_eggs;
-    std::string m_song;
-
+    double m_wingspan;
 public:
     Bird();
-    Bird(const std::string& name, int age, double weight);
-
+    Bird(const std::string& name, int age, double weight, double wingspan = 0.0);
     void fly() const;
     void print() const override;
 };
 
-
 class Fish : public Animal {
-    std::string m_water;
-    int m_fins;
-    double m_speed;
-    bool m_edible;
-    std::string m_kind;
-    std::string m_food;
-
+    std::string m_waterType;
 public:
     Fish();
-    Fish(const std::string& name, int age, double weight);
-
+    Fish(const std::string& name, int age, double weight, const std::string& waterType = "Freshwater");
     void swim() const;
     void print() const override;
 };
 
-
 class Lion : public Animal {
-    int m_cubs;
-    double m_roar;
-    bool m_alpha;
-    double m_hunt;
-    std::string m_place;
-    std::string m_pride;
-
+    int m_maneSize;
 public:
     Lion();
-    Lion(const std::string& name, int age, double weight);
-
+    Lion(const std::string& name, int age, double weight, int maneSize = 0);
     void roar() const;
     void print() const override;
 };
 
-
 class Elephant : public Animal {
-    double m_trunk;
-    int m_herd;
-    bool m_endangered;
-    std::string m_kind;
-    double m_memory;
-    double m_tusk;
-
+    double m_tuskLength;
 public:
     Elephant();
-    Elephant(const std::string& name, int age, double weight);
-
+    Elephant(const std::string& name, int age, double weight, double tuskLength = 0.0);
     void sound() const;
     void print() const override;
 };
