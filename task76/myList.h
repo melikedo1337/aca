@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <stdexcept>
 
 template <typename T>
 struct Node {
@@ -21,12 +20,7 @@ private:
         Node<T>* cur = other.head;
         while (cur) {
             push_back(cur->data);
-            cur = cur->next;#include <iostream>
-#include "myList"
-
-int main(){
-    
-}
+            cur = cur->next;
         }
     }
 
@@ -71,7 +65,7 @@ public:
 
     void insert(int index, const T& value) {
         if (index < 0 || index > size)
-            throw std::out_of_range("index");
+            return;
 
         if (index == 0) {
             push_front(value);
@@ -94,20 +88,16 @@ public:
     }
 
     T front() const {
-        if (!head)
-            throw std::runtime_error("empty");
-        return head->data;
+        return head ? head->data : T();
     }
 
     T back() const {
-        if (!tail)
-            throw std::runtime_error("empty");
-        return tail->data;
+        return tail ? tail->data : T();
     }
 
     T at(int index) const {
         if (index < 0 || index >= size)
-            throw std::out_of_range("index");
+            return T();
 
         Node<T>* cur = head;
         for (int i = 0; i < index; ++i)
